@@ -108,7 +108,9 @@ public class Deposito
 	 */
 	public void printAvailableToSold()
 	{
-		System.out.println( "\n>>> AVAILABLE PRODUCTS <<<" );
+		System.out.println( "\n>>> AVAILABLE TO SOLD PRODUCTS <<<" );
+		
+		// With the foreach is guaranteed as present on store inventory.
 		for ( Produto current : produtos )
 		{
 			if ( current.podeSerVendido() )

@@ -208,11 +208,12 @@ abstract public class Produto
 				SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
 				Calendar cal = Calendar.getInstance();
 				cal.setTime( df.parse( data_de_fabr ) );
+				this.data_de_fabr = data_de_fabr;
 			} catch ( Exception e )
 			{
 				System.out.println( e );
 			}
-			this.data_de_fabr = data_de_fabr;
+			
 		} else 
 		{
 			throw new IllegalArgumentException( "Fabrication date can't be null!!" );

@@ -15,6 +15,7 @@ public class Chocolate extends ProdutoNaoDuravel
 	/**
 	 * Default constructor.
 	 *
+	 * @param id Id of the product.
 	 * @param nome Name of the product.
 	 * @param preco Price of the product.
 	 * @param marca Brand of the product.
@@ -24,7 +25,8 @@ public class Chocolate extends ProdutoNaoDuravel
 	 * @param forma Mold of the choco product (Barra, Ovo, Bombom)
 	 * @param tipo Type of choco product (Branco, Ao leite, Amargo, Com castanha).
 	 */ 
-	public Chocolate( String nome
+	public Chocolate( String id
+						, String nome
 						, double preco
 						, String marca
 						, String descricao
@@ -32,23 +34,25 @@ public class Chocolate extends ProdutoNaoDuravel
 						, String data_de_valid
 						, String genero 
 						, String forma
-						, String tipo         ) throws IllegalArgumentException
+						, String tipo         ) throws IllegalArgumentException, Exception
 	{
 
-		super( nome, preco, marca, descricao, data_de_fabr, data_de_valid, genero );
-
-		if( forma != null && tipo != null )
-		{
-			this.forma = forma;
-			this.tipo  = tipo;
-		} else 
-		{
-			throw new IllegalArgumentException( "Chocolate Mold or Type can't be null!!" );
-		}
-
+		super( id, nome, preco, marca, descricao, data_de_fabr, data_de_valid, genero );
+		setForma( forma );
+		setTipo( tipo );
+		
 	}
 
 	// Gets and Sets methods.
+	 
+	
+	/**
+	 * Sets the mold of the choco.
+	 *
+	 * @param forma The choco's form.
+	 *
+	 * @throws IllegalArgumentException if forma is null.
+	 */
 	public void setForma( String forma ) throws IllegalArgumentException
 	{
 		if ( forma != null )
@@ -60,11 +64,25 @@ public class Chocolate extends ProdutoNaoDuravel
 		}
 	}
 
+
+	/**
+	 * Gets the choco's mold.
+	 *
+	 * @return  The choco's mold.
+	 */
 	public String getForma()
 	{
 		return forma;
 	}
 
+
+	/**
+	 * Sets the choco's type.
+	 *
+	 * @param tipo The choco's type.
+	 *
+	 * @throws IllegalArgumentException if tipo is null.
+	 */
 	public void setTipo( String tipo ) throws IllegalArgumentException
 	{
 		if ( tipo != null )
@@ -76,8 +94,28 @@ public class Chocolate extends ProdutoNaoDuravel
 		}
 	}
 
+
+	/**
+	 * Gets the choco's type.
+	 *
+	 * @return The choco's type.
+	 */
 	public String getTipo()
 	{
 		return tipo;
+	}
+
+
+	/**
+	 * Returns a string representation of the object.
+	 *
+	 * @return String representation of the object.
+	 */
+	@Override
+	public String toString()
+	{
+		return "\n>> Chocolate <<\n" + super.toString()
+								   + "\nForma : " + getForma()
+								   + "\nTipo de Chocolate : " + getTipo();
 	}
 }

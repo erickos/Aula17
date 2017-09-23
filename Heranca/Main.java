@@ -1,4 +1,4 @@
-
+import java.lang.*;
 /**
  * Class to execute and test the classes and methods of Produto subclasses.
  *
@@ -7,20 +7,20 @@
  */
 public class Main
 {
-	public static void main( String[] args )
+	public static void main( String[] args ) throws Exception, IllegalArgumentException
 	{
 		// Nova database.
 		Deposito database = new Deposito();
 		
 		// Produtos Duraveis		
-		Celular celular 	= new Celular( "iPhone 4", 2000.00, "Apple", "A smartphone", "2010.12.20", "Aço", 2, 4.0, 16000 );
-		Livro 	livro 		= new Livro( "Jogo do Exterminador", 39.90, "Editora Devir", "Science Fiction's book.", "2016.07.19", "Papel", 20, "Orson Scott Card", 325, "4ª edição (2013)" );
-		Carro   carro   	= new Carro( "Civic", 80000.00, "Honda", "Car", "2015.10.20", "Aço", 6, 2016, "Sedan");
+		Celular celular 	= new Celular( "1", "iPhone 4", 2000.00, "Apple", "A smartphone", "20/12/2010", "Aço", 2, 4.0, 16000, false );
+		Livro 	livro 		= new Livro( "2", "Jogo do Exterminador", 39.90, "Editora Devir", "Science Fiction's book.", "19/07/2016", "Papel", 20, "Orson Scott Card", 325, "4ª edição (2013)", false );
+		Carro   carro   	= new Carro( "3" ,"Civic", 80000.00, "Honda", "Car", "20/10/2015", "Aço", 6, 2016, "Sedan", true );
 
 		// Produtos não Duraveis
-		Pizza pizza 	    = new Pizza( "Pizza", 30.00, "Pizzaria X", "Comida", "2017.08.23", "2017.08.24", "Alimento", "G", "Calabresa" );
-		Refrigerante refri  = new Refrigerante( "Guaraná", 6.50, "Antartica", "Bebida", "2017.07.23", "2017.12.31", "Alimento", 2000, "Diet" );
-		Chocolate chocolate = new Chocolate( "Sonho de Valsa", 1.50, "Garoto", "Bombom", "2017.06.25", "2017.10.30", "Alimento", "Bombom", "Ao leite" );
+		Pizza pizza 	    = new Pizza( "4", "Pizza", 30.00, "Pizzaria X", "Comida", "2017/08/23", "22/10/2017", "Alimento", "G", "Calabresa" );
+		Refrigerante refri  = new Refrigerante( "5", "Guaraná", 6.50, "Antartica", "Bebida", "2017/07/23", "31/10/2017", "Alimento", 2000, "Diet" );
+		Chocolate chocolate = new Chocolate( "6", "Sonho de Valsa", 1.50, "Garoto", "Bombom", "2017/06/25", "30/12/2017", "Alimento", "Bombom", "Ao leite" );
 
 		// Teste is_Empty() com a database vazia.
 		database.is_Empty();
@@ -77,6 +77,8 @@ public class Main
 
 		// Teste getQtdProdutos(). Esperado : 6.
 		database.getQtdProdutos();
+
+		database.printAvailableToSold();
 
 		// Teste printDatabase().
 		database.printDatabase();

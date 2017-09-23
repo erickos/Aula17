@@ -18,6 +18,7 @@ public class Refrigerante extends ProdutoNaoDuravel
 	/**
 	 * Default constructor.
 	 *
+	 * @param id Id of the product.
 	 * @param nome Name of the product.
 	 * @param preco Price of the product.
 	 * @param marca Brand of the product.
@@ -27,7 +28,8 @@ public class Refrigerante extends ProdutoNaoDuravel
 	 * @param qtd_litros Quantity of mililiters on soda product.
 	 * @param tipo Type of soda product (Light, Diet, Normal).
 	 */ 
-	public Refrigerante( String nome
+	public Refrigerante( String id
+						, String nome
 						, double preco
 						, String marca
 						, String descricao
@@ -35,22 +37,26 @@ public class Refrigerante extends ProdutoNaoDuravel
 						, String data_de_valid
 						, String genero
 						, int    qtd_litros
-						, String tipo         ) throws IllegalArgumentException
+						, String tipo         ) throws IllegalArgumentException, Exception
 	{
-		super( nome, preco, marca, descricao, data_de_fabr, data_de_valid, genero );
+		super( id, nome, preco, marca, descricao, data_de_fabr, data_de_valid, genero );
 
-		if ( qtd_litros >= min_qtd_litros && tipo != null )
-		{
-			this.qtd_litros = qtd_litros;
-			this.tipo = tipo;
-		} else 
-		{
-			throw new IllegalArgumentException( "Quantity of liters can't be smaller than the minimum default value ("+ min_qtd_litros +" ml) or Type can't be null" );
-		}
+		setQtdLitros( qtd_litros );
+		setTipo( tipo );
+		
 	}
 
 
 	// Gets and Sets methods.
+	
+
+	/**
+	 * Sets the soda bottle capacity.
+	 *
+	 * @param  qtd_litros The soda bottle capacity.
+	 *
+	 * @throws IllegalArgumentException if qtd_litros is smaller than the minimum value for bottle capacity.
+	 */
 	public void setQtdLitros( int qtd_litros ) throws IllegalArgumentException
 	{
 		if ( qtd_litros >= min_qtd_litros )
@@ -62,11 +68,25 @@ public class Refrigerante extends ProdutoNaoDuravel
 		}
 	}
 
+
+	/**
+	 * Gets the soda bottle capacity.
+	 *
+	 * @return The soda bottle capacity.
+	 */
 	public int getQtdLitros()
 	{
 		return qtd_litros;
 	}
 
+
+	/**
+	 * Sets the soda type.
+	 *
+	 * @param tipo The soda type.
+	 *
+	 * @throws IllegalArgumentException if tipo is null.
+	 */
 	public void setTipo( String tipo ) throws IllegalArgumentException
 	{
 		if ( tipo != null )
@@ -78,8 +98,27 @@ public class Refrigerante extends ProdutoNaoDuravel
 		}
 	}
 
+
+	/**
+	 * Gets the soda type.
+	 *
+	 * @return The soda type.
+	 */
 	public String getTipo()
 	{
 		return tipo;
+	}
+
+	/**
+	 * Returns a string representation of the object.
+	 *
+	 * @return String representation of the object.
+	 */
+	@Override
+	public String toString()
+	{
+		return "\n>> Refrigerante <<\n" + super.toString()
+								   + "\nLitros : " + getQtdLitros()
+								   + "\nTipo : " + getTipo();
 	}
 }

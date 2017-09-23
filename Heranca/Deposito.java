@@ -27,7 +27,7 @@ public class Deposito
 	 */
 	public void addProduto( Produto theProduto )
 	{
-		System.out.println( ">>> Inserting a new Product <<<" );
+		System.out.println( "\n>>> Inserting a new Product <<<" );
 		produtos.add( theProduto );
 	}
 
@@ -85,22 +85,38 @@ public class Deposito
 	 * @return Product object to a item with the larger price.
 	 */
 	public Produto mostValuable()
-	{
-		Produto most = new Produto( "default", 0.0, "default", "default", "default" );
-	
+	{	
+		int index_most = 0;
+
 		for ( Produto current : produtos )
 		{
-			if ( current.getPreco() > most.getPreco() )
+			if ( current.getPreco() > produtos.get( index_most ).getPreco() )
 			{
-					
-				most = current;
+				index_most = produtos.indexOf( current );
 			}
 		}
 
 		System.out.println(">>> Most Valuable Product <<<");
-		most.print();
+		System.out.println( produtos.get( index_most ) );
 
-		return most;
+		return produtos.get( index_most );
+	}
+
+
+	/**
+	 * Print the products available to sold.
+	 */
+	public void printAvailableToSold()
+	{
+		System.out.println( "\n>>> AVAILABLE PRODUCTS <<<" );
+		for ( Produto current : produtos )
+		{
+			if ( current.podeSerVendido() )
+			{
+				System.out.println( current );
+			}
+		}
+		System.out.println( ">>> END OF DATABASE <<<\n" );
 	}
 
 	/**
@@ -111,7 +127,7 @@ public class Deposito
 		System.out.println( "\n>>> DATABASE <<<" );
 		for ( Produto current : produtos )
 		{
-			current.print();
+			System.out.println( current );
 		}
 		System.out.println( ">>> END OF DATABASE <<<\n" );
 	}

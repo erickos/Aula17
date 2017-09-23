@@ -25,6 +25,7 @@ public class Carro extends ProdutoDuravel
 	 * @param durabilidade Durability, in years, of the durable product.
 	 * @param ano Year of the car product.
 	 * @param tipo Type of car product (Sedan, Esportivo, Conversivel, Hatch).
+	 * @param avaria If the car is damaged or not.
 	 */ 
 	public Carro(  String id
 				,  String nome
@@ -128,6 +129,7 @@ public class Carro extends ProdutoDuravel
 	 *
 	 * @return String representation of the object.
 	 */
+	@Override
 	public String toString()
 	{
 		return "\n>> Carro <<\n" + super.toString()

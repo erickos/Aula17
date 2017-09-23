@@ -175,6 +175,7 @@ public class Televisao extends ProdutoDuravel
 	 *
 	 * @return String representation of the object.
 	 */
+	@Override
 	public String toString()
 	{	
 		// String repesentation for true or false.

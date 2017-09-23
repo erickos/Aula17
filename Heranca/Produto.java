@@ -6,6 +6,9 @@ import java.util.Calendar;
 /**
  * A Produto.
  * Produto has a id, name, price, brand, description and a manufacture date.
+ * 
+ * @author Erick de Oliveira Silva
+ * @version 2017.09.22
  */
 abstract public class Produto
 {

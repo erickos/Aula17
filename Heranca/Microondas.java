@@ -180,6 +180,13 @@ public class Microondas extends ProdutoDuravel
 		return false;
 	}
 
+
+	/**
+	 * Returns a string representation of the object.
+	 *
+	 * @return     String representation of the object.
+	 */
+	@Override
 	public String toString()
 	{
 		return "\n>> Microondas <<\n" + super.toString()

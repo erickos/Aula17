@@ -153,7 +153,7 @@ public class Livro extends ProdutoDuravel
 		
 		"papel".toLowerCase( Locale.ENGLISH );
 
-		return getMaterialPred().toLowerCase().equals( "papel" ); 
+		return !( (getMaterialPred().toLowerCase().equals( "papel" )) || (getMaterialPred().toLowerCase().equals( "paper" )) ); 
 	}
 
 	/**
@@ -164,10 +164,17 @@ public class Livro extends ProdutoDuravel
 	@Override
 	public String toString()
 	{
+		String eletronico = "Não";
+		if ( ehEletronico() )
+		{
+			eletronico = "Sim";
+		}
+
 		return "\n>> Livro <<\n" + super.toString()
 								   + "\nAutor : " + getAutor()
 								   + "\nNumero de paginas : " + getNumeroDePag()
-								   + "\nEdicao : " + getEdicao();
+								   + "\nEdicao : " + getEdicao()
+								   + "\nEletronico : " + eletronico;
 	}
 
 }

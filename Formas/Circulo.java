@@ -85,8 +85,8 @@ public class Circulo extends Forma
 	@Override
 	public String toString()
 	{
-		return "\n>> Circulo <<\n" + "-> Raio : " + getRaio()
-								   + "\n-> Area : " + calcularArea()
-								   + "\n-> Perimetro : " + calcularPerimetro() + "\n";
+		return "\n>> Circulo <<\n" + "Raio : " + getRaio()
+								   + "\nArea : " + calcularArea()
+								   + "\nPerimetro : " + calcularPerimetro() + "\n";
 	}
 }
